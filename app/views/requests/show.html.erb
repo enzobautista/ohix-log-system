@@ -1,0 +1,259 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Service number:</strong>
+  <%= @request.service_number %>
+</p>
+
+<p>
+  <strong>Severity critical:</strong>
+  <%= @request.severity_critical %>
+</p>
+
+<p>
+  <strong>Severity major:</strong>
+  <%= @request.severity_major %>
+</p>
+
+<p>
+  <strong>Severity minor:</strong>
+  <%= @request.severity_minor %>
+</p>
+
+<p>
+  <strong>Service title:</strong>
+  <%= @request.service_title %>
+</p>
+
+<p>
+  <strong>Reported by:</strong>
+  <%= @request.reported_by %>
+</p>
+
+<p>
+  <strong>Date reported:</strong>
+  <%= @request.date_reported %>
+</p>
+
+<p>
+  <strong>Dept unit section:</strong>
+  <%= @request.dept_unit_section %>
+</p>
+
+<p>
+  <strong>Contact number:</strong>
+  <%= @request.contact_number %>
+</p>
+
+<p>
+  <strong>Affected modules:</strong>
+  <%= @request.affected_modules %>
+</p>
+
+<p>
+  <strong>Request type software defect:</strong>
+  <%= @request.request_type_software_defect %>
+</p>
+
+<p>
+  <strong>Request type configuration:</strong>
+  <%= @request.request_type_configuration %>
+</p>
+
+<p>
+  <strong>Request type data fix:</strong>
+  <%= @request.request_type_data_fix %>
+</p>
+
+<p>
+  <strong>Request type desktop problem:</strong>
+  <%= @request.request_type_desktop_problem %>
+</p>
+
+<p>
+  <strong>Request type preventive maintenance:</strong>
+  <%= @request.request_type_preventive_maintenance %>
+</p>
+
+<p>
+  <strong>Request type program enhancement:</strong>
+  <%= @request.request_type_program_enhancement %>
+</p>
+
+<p>
+  <strong>Request type report request:</strong>
+  <%= @request.request_type_report_request %>
+</p>
+
+<p>
+  <strong>Request type new system:</strong>
+  <%= @request.request_type_new_system %>
+</p>
+
+<p>
+  <strong>Request type new system:</strong>
+  <%= @request.request_type_new_system %>
+</p>
+
+<p>
+  <strong>Request type others:</strong>
+  <%= @request.request_type_others %>
+</p>
+
+<p>
+  <strong>Request details:</strong>
+  <%= @request.request_details %>
+</p>
+
+<p>
+  <strong>Attachments:</strong>
+  <%= @request.attachments %>
+</p>
+
+<p>
+  <strong>Request reported by:</strong>
+  <%= @request.request_reported_by %>
+</p>
+
+<p>
+  <strong>Request reported by date:</strong>
+  <%= @request.request_reported_by_date %>
+</p>
+
+<p>
+  <strong>Request endorsed by:</strong>
+  <%= @request.request_endorsed_by %>
+</p>
+
+<p>
+  <strong>Request endorsed by date:</strong>
+  <%= @request.request_endorsed_by_date %>
+</p>
+
+<p>
+  <strong>Request approved by:</strong>
+  <%= @request.request_approved_by %>
+</p>
+
+<p>
+  <strong>Request approved by date:</strong>
+  <%= @request.request_approved_by_date %>
+</p>
+
+<p>
+  <strong>Findings:</strong>
+  <%= @request.findings %>
+</p>
+
+<p>
+  <strong>Assessment software defect:</strong>
+  <%= @request.assessment_software_defect %>
+</p>
+
+<p>
+  <strong>Assessment configuration:</strong>
+  <%= @request.assessment_configuration %>
+</p>
+
+<p>
+  <strong>Assessment enhancement:</strong>
+  <%= @request.assessment_enhancement %>
+</p>
+
+<p>
+  <strong>Assessment data:</strong>
+  <%= @request.assessment_data %>
+</p>
+
+<p>
+  <strong>Assessment business process:</strong>
+  <%= @request.assessment_business_process %>
+</p>
+
+<p>
+  <strong>Assessment others:</strong>
+  <%= @request.assessment_others %>
+</p>
+
+<p>
+  <strong>Assessed by:</strong>
+  <%= @request.assessed_by %>
+</p>
+
+<p>
+  <strong>Assessment date:</strong>
+  <%= @request.assessment_date %>
+</p>
+
+<p>
+  <strong>Recommendations:</strong>
+  <%= @request.recommendations %>
+</p>
+
+<p>
+  <strong>Recommendation endorsed by:</strong>
+  <%= @request.recommendation_endorsed_by %>
+</p>
+
+<p>
+  <strong>Recommendation date:</strong>
+  <%= @request.recommendation_date %>
+</p>
+
+<p>
+  <strong>Results attachments test scenarios:</strong>
+  <%= @request.results_attachments_test_scenarios %>
+</p>
+
+<p>
+  <strong>Results attachments test results:</strong>
+  <%= @request.results_attachments_test_results %>
+</p>
+
+<p>
+  <strong>Results attachments sample output:</strong>
+  <%= @request.results_attachments_sample_output %>
+</p>
+
+<p>
+  <strong>Tested by:</strong>
+  <%= @request.tested_by %>
+</p>
+
+<p>
+  <strong>Tested by date:</strong>
+  <%= @request.tested_by_date %>
+</p>
+
+<p>
+  <strong>Conclusion accepted:</strong>
+  <%= @request.conclusion_accepted %>
+</p>
+
+<p>
+  <strong>Conclusion rejected:</strong>
+  <%= @request.conclusion_rejected %>
+</p>
+
+<p>
+  <strong>Conclusion reason:</strong>
+  <%= @request.conclusion_reason %>
+</p>
+
+<p>
+  <strong>Conclusion by:</strong>
+  <%= @request.conclusion_by %>
+</p>
+
+<p>
+  <strong>Conclusion by date:</strong>
+  <%= @request.conclusion_by_date %>
+</p>
+
+<p>
+  <strong>Deadline:</strong>
+  <%= @request.deadline %>
+</p>
+
+<%= link_to 'Edit', edit_request_path(@request) %> |
+<%= link_to 'Back', requests_path %>

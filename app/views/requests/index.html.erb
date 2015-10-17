@@ -1,0 +1,147 @@
+<section id="service-request-listing">
+<center><h1>Service Requests</h1>
+<h4><%=DateTime.now.to_date%></h4>
+</center>
+<div class="container-fluid row">
+<div class="col-md-1"></div>
+<div class="col-md-10">
+  <div class="panel panel-default x-scroll">
+    <!-- Default panel contents -->
+    <!-- Table -->
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Service number</th>
+        <th>Service title</th>
+        <th>Severity</th>
+        <th>Reported by</th>
+        <th>Date reported</th>
+        <th>Dept unit section</th>
+        <th>Contact number</th>
+        <th>Affected modules</th>
+        <th>Request Type</th>
+        <th>Request details</th>
+        <th>Attachments</th>
+        <th>Request endorsed by</th>
+        <th>Request endorsed by date</th>
+        <th>Request approved by</th>
+        <th>Request approved by date</th>
+        <th>Findings</th>
+        <th>Assessment </th>
+        <th>Assessed by</th>
+        <th>Assessment date</th>
+        <th>Deadline</th>
+        <th>Recommendations</th>
+        <th>Recommendation endorsed by</th>
+        <th>Recommendation date</th>
+        <th>Results attachments test scenarios</th>
+        <th>Results attachments test results</th>
+        <th>Results attachments sample output</th>
+        <th>Tested by</th>
+        <th>Tested by date</th>
+        <th>Conclusion</th>
+        <th>Conclusion reason</th>
+        <th>Conclusion by</th>
+        <th>Conclusion by date</th>
+        <th colspan="3">Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @requests.each do |request| %>
+      <%severity=""%>
+      <%if request.severity_critical==true%>
+        <%severity="critical"%>
+      <%elsif request.severity_major==true%>
+        <%severity="major"%>
+      <%elsif request.severity_minor==true%>
+        <%severity="minor"%>
+      <%end%>
+
+      <%r_type=""%>
+      <%if request.request_type_configuration==true%>
+        <%r_type="Configuration"%>
+      <%elsif request.request_type_software_defect==true%>
+        <%r_type="Software Defect"%>
+      <%elsif request.request_type_data_fix==true%>
+        <%r_type="Data Fix"%>
+      <%elsif request.request_type_desktop_problem==true%>
+      <%r_type="Desktop Problem"%>
+      <%elsif request.request_type_preventive_maintenance==true%>
+      <%r_type="Preventive Maintenance"%>
+      <%elsif request.request_type_program_enhancement==true%>
+      <%r_type="Program Enhancement"%>
+      <%elsif request.request_type_report_request==true%>
+      <%r_type="Report Request"%>
+      <%elsif request.request_type_new_system==true%>
+      <%r_type="New System"%>
+      <%else%>
+      <%r_type=request.request_type_others%>
+      <%end%>
+
+      <%assessment=""%>
+      <%if request.assessment_software_defect==true%>
+        <%assessment="Software Defect"%>
+      <%elsif request.assessment_configuration==true%>
+        <%assessment="Configuration"%>
+      <%elsif request.assessment_enhancement==true%>
+        <%assessment="Enhancement"%>
+      <%elsif request.assessment_data==true%>
+      <%assessment="Data"%>
+      <%elsif request.assessment_business_process==true%>
+      <%assessment="Business Process"%>
+      <%else%>
+      <%assessment=request.assessment_others%>
+      <%end%>
+
+      <%conclusion=""%>
+      <%if request.conclusion_accepted==true%>
+        <%conclusion="Accepted"%>
+      <%elsif request.conclusion_rejected==true%>
+        <%conclusion="rejected"%>
+      <%end%>
+        <tr>
+          <td><%= request.service_number %></td>
+          <td><%= request.service_title %></td>
+          <td><%= severity %></td>
+          <td><%= request.reported_by %></td>
+          <td><%= request.date_reported %></td>
+          <td><%= request.dept_unit_section %></td>
+          <td><%= request.contact_number %></td>
+          <td><%= request.affected_modules %></td>
+          <td><%= r_type %></td>
+          <td><%= request.request_details %></td>
+          <td><%= request.attachments %></td>
+          <td><%= request.request_endorsed_by %></td>
+          <td><%= request.request_endorsed_by_date %></td>
+          <td><%= request.request_approved_by %></td>
+          <td><%= request.request_approved_by_date %></td>
+          <td><%= request.findings %></td>
+          <td><%= assessment%></td>
+          <td><%= request.assessed_by %></td>
+          <td><%= request.assessment_date %></td>
+          <td><%= request.deadline%></td>
+          <td><%= request.recommendations %></td>
+          <td><%= request.recommendation_endorsed_by %></td>
+          <td><%= request.recommendation_date %></td>
+          <td><%= request.results_attachments_test_scenarios %></td>
+          <td><%= request.results_attachments_test_results %></td>
+          <td><%= request.results_attachments_sample_output %></td>
+          <td><%= request.tested_by %></td>
+          <td><%= request.tested_by_date %></td>
+          <td><%= conclusion%></td>
+          <td><%= request.conclusion_reason %></td>
+          <td><%= request.conclusion_by %></td>
+          <td><%= request.conclusion_by_date %></td>
+          <td><%= link_to 'Show', request %></td>
+          <td><%= link_to 'Edit', edit_request_path(request) %></td>
+          <td><%= link_to 'Destroy', request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  </div>
+</div>
+</div>
+<center><%= link_to 'New Request', new_request_path, :class=>"btn btn1 add-sr"%></center>
+</section>

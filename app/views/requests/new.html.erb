@@ -1,0 +1,302 @@
+<section id="new-service-request" class="container-fluid row">
+<div class="col-md-2"></div>
+<div class="col-md-8 card">
+<div style="padding-top:10px;"><center><span style="font-size:40px;">Service Request</span> <%= link_to 'Back', requests_path, :style=>"float:right;",:class=>"btn btn-default" %></center></div><hr>
+<%= form_for(@request) do |f| %>
+<div class="view">
+
+  <% if @request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@request.errors.count, "error") %> prohibited this request from being saved:</h2>
+
+      <ul>
+      <% @request.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :service_number, "SR Number:" %> <%= f.number_field :service_number %>
+  </div>
+  <hr>
+  <b>Severity Level:</b>
+  <div class="field container-fluid row">
+    <div class="col-md-2">
+      <%= f.check_box :severity_critical,:class=>"chb" %> <%= f.label :severity_critical,"Critical" %>
+    </div>
+    <div class="col-md-2">
+      <%= f.check_box :severity_major,:class=>"chb" %> <%= f.label :severity_major,"Major" %>
+    </div>
+    <div class="col-md-2">
+      <%= f.check_box :severity_minor,:class=>"chb" %> <%= f.label :severity_minor,"Minor" %>
+    </div>
+    <script type="text/javascript">
+      $(".chb").each(function()
+      {
+          $(this).change(function()
+          {
+              $(".chb").prop('checked',false);
+              $(this).prop('checked',true);
+          });
+      });
+    </script>
+  </div>
+  <hr>
+  <div class="field container-fluid row">
+	  <div class="row">
+	    <div class="col-md-3">
+	      <%= f.label :service_title, "SR Title:" %> <%= f.text_field :service_title %>
+	    </div>
+	    <div class="col-md-3">
+	      <%= f.label :reported_by,"Reported by:" %><%= f.text_field :reported_by %>
+	    </div>
+	    <div class="col-md-6">
+	      <%= f.label :date_reported, "Date Reported:" %><%= f.date_select :date_reported %>
+	    </div>
+	</div>
+	<br>
+	<div class="row">
+	  <div class="col-md-4">
+	    <%= f.label :dept_unit_section %> <%= f.text_field :dept_unit_section %>
+	  </div>
+	  <div class="col-md-4">
+	    <%= f.label :contact_number %> <%= f.text_field :contact_number %>
+	  </div>
+	  <div class="col-md-4">
+	    <%= f.label :affected_modules %> <%= f.text_field :affected_modules %>
+  	  </div>
+	</div>
+  </div>
+  <hr>
+  <b>Request Type:</b>
+  <div class="container-fluid row field">
+    <div class="col-md-3">
+      <%= f.check_box :request_type_software_defect,:class=>"chb1",:onClick=>"Hide('others_box', this);" %> <%= f.label :request_type_software_defect,"Software Defect" %>
+    </div>
+    <div class="col-md-3">
+      <%= f.check_box :request_type_configuration,:class=>"chb1",:onClick=>"Hide('others_box', this);" %> <%= f.label :request_type_configuration,"Configuration" %>
+    </div>
+    <div class="col-md-3">
+      <%= f.check_box :request_type_data_fix,:class=>"chb1",:onClick=>"Hide('others_box', this);" %> <%= f.label :request_type_data_fix,"Data Fix" %>
+    </div>
+    <div class="col-md-3">
+      <%= f.check_box :request_type_desktop_problem,:class=>"chb1",:onClick=>"Hide('others_box', this);" %> <%= f.label :request_type_desktop_problem,"Desktop Problem" %>
+    </div>
+    <div class="col-md-3">
+      <%= f.check_box :request_type_preventive_maintenance,:class=>"chb1",:onClick=>"Hide('others_box', this);" %> <%= f.label :request_type_preventive_maintenance,"Preventive Maintenance" %>
+    </div>
+    <div class="col-md-3">
+      <%= f.check_box :request_type_program_enhancement,:class=>"chb1",:onClick=>"Hide('others_box', this);" %> <%= f.label :request_type_program_enhancement,"Program Enhancement" %>
+    </div>
+    <div class="col-md-3">
+      <%= f.check_box :request_type_report_request,:class=>"chb1",:onClick=>"Hide('others_box', this);" %> <%= f.label :request_type_report_request,"Report Request" %>
+    </div>
+    <div class="col-md-3">
+      <%= f.check_box :request_type_new_system,:class=>"chb1",:onClick=>"Hide('others_box', this);" %> <%= f.label :request_type_new_system,"New System" %>
+    </div>
+    <div class="col-md-3">
+      <input id="other-b" type="checkbox" class="chb1" onClick="Reveal('others_box', this);"> <label for="other-b">Other</label><br>
+      <%= f.text_field :request_type_others,:id=>"others_box" %>
+    </div>
+  </div>
+  <script type="text/javascript">
+      $(".chb1").each(function()
+    {
+        $(this).change(function()
+        {
+            $(".chb1").prop('checked',false);
+            $(this).prop('checked',true);
+        });
+    });
+  </script>
+  <hr>
+  <b>REQUEST DETAILS:<b>
+  <div class="container-fluid field">
+  	<div class="row">
+	  <div class="col-md-9">
+	    <%= f.label :request_details, "Describe the nature of the request or details of the problem encountered." %>
+	  </div>
+	  <div class="col-md-3">
+	    <%= f.check_box :attachments %> <%= f.label :attachments %>
+	  </div>
+	</div>  
+	<div class="row">
+	   <%= f.text_area :request_details, cols: "100", rows: "5" %>
+	</div>  
+	<br>
+	<!--<div class="row">
+	   <div class="col-md-6">
+	    <%= f.label :request_reported_by, "Reported by:" %> <%= f.text_field :request_reported_by %>
+	  </div>
+	  <div class="col-md-6">
+	    <%= f.label :request_reported_by_date %> <%= f.date_select :request_reported_by_date %>
+	  </div>
+	</div>  
+	<br>-->
+    <div class="row">
+	  <div class="col-md-5">
+		<%= f.label :request_endorsed_by, "Endorsed by:" %> <%= f.text_field :request_endorsed_by %>
+	  </div>
+	  <div class="col-md-6">
+	    <%= f.label :request_endorsed_by_date, "Date Endorsed:" %> <%= f.date_select :request_endorsed_by_date %>
+	  </div>
+	</div>  
+	<br>
+    <div class="row">
+	  <div class="col-md-5">
+	    <%= f.label :request_approved_by, "Approved By:" %> <%= f.text_field :request_approved_by %>
+	  </div>
+	  <div class="col-md-6">
+	    <%= f.label :request_approved_by_date, "Date Approved:" %> <%= f.date_select :request_approved_by_date %>
+	  </div>
+	</div>  
+  </div>
+  <hr>
+  <b>FINDINGS:</b>
+  <div class="field">
+    <%= f.text_area :findings, cols: "100", rows: "5"  %>
+  </div>
+  <hr>
+  <b>Problem Assessment:</b>
+    <div class="container-fluid row">
+	  <div class="col-md-3">
+	    <%= f.check_box :assessment_software_defect,:class=>"chb4",:onClick=>"Hide('others_box1', this);" %> <%= f.label :assessment_software_defect, "Software Defect" %><br>
+	    <%= f.check_box :assessment_configuration,:class=>"chb4",:onClick=>"Hide('others_box1', this);" %> <%= f.label :assessment_configuration, "Configuration" %>
+	  </div>
+	  <div class="col-md-3">
+	    <%= f.check_box :assessment_enhancement,:class=>"chb4",:onClick=>"Hide('others_box1', this);" %> <%= f.label :assessment_enhancement,"Enhancement" %><br>
+	    <%= f.check_box :assessment_data,:class=>"chb4",:onClick=>"Hide('others_box1', this);" %> <%= f.label :assessment_data, "Data" %>
+	  </div>
+	  <div class="col-md-3">
+	    <%= f.check_box :assessment_business_process,:class=>"chb4",:onClick=>"Hide('others_box1', this);" %> <%= f.label :assessment_business_process, "Business Process" %><br>
+	      <input id="other-b1" type="checkbox" class="chb4" onClick="Reveal('others_box1', this);"> <label for="other-b1">Other</label><br>
+	      <%= f.text_field :assessment_others,:id=>"others_box1" %>
+	  </div>
+	</div>
+	  <script type="text/javascript">
+      $(".chb4").each(function()
+    {
+        $(this).change(function()
+        {
+            $(".chb4").prop('checked',false);
+            $(this).prop('checked',true);
+        });
+    });
+      </script>
+	<hr>
+	<div class="container-fluid row">
+	  <div class="col-md-5">
+	   <%= f.label :assessed_by, "Assessed By:" %> <%= f.text_field :assessed_by %>
+	  </div>
+	  <div class="col-md-6">
+	    <%= f.label :assessment_date, "Date Assessed:" %> <%= f.date_select :assessment_date %>
+	  </div>
+	</div>
+	<br>
+  <div class="field">
+    <%= f.label :recommendations %><br>
+    <%= f.text_area :recommendations, cols: "100", rows: "5" %>
+  </div>
+  <br>
+  <div class="container-fluid row">
+	<div class="col-md-5">
+	   <%= f.label :recommendation_endorsed_by, "Recommended By:" %><%= f.text_field :recommendation_endorsed_by %>
+	</div>
+	<div class="col-md-6">
+	    <%= f.label :recommendation_date, "Date of Recommended:" %><%= f.date_select :recommendation_date %>
+	</div>
+  </div>
+  <hr>
+  <b>ACCEPTANCE OF RESULTS</b> (for service rendered) <br>
+  <b>Attachments</b>
+    <div class="container-fluid row field">
+ 		  <div class="col-md-3">
+		    <%= f.check_box :results_attachments_test_scenarios,:class=>"chb2" %> <%= f.label :results_attachments_test_scenarios, "Test Scenarios" %>
+		  </div>
+		  <div class="col-md-3">
+		    <%= f.check_box :results_attachments_test_results,:class=>"chb2" %> <%= f.label :results_attachments_test_results, "Test Results" %>
+		  </div>
+		  <div class="col-md-3">
+		    <%= f.check_box :results_attachments_sample_output,:class=>"chb2" %> <%= f.label :results_attachments_sample_output, "Sample Output" %>
+  		  </div>
+  	</div>
+  <script type="text/javascript">
+      $(".chb2").each(function()
+    {
+        $(this).change(function()
+        {
+            $(".chb2").prop('checked',false);
+            $(this).prop('checked',true);
+        });
+    });
+  </script>
+  <hr>
+    <div class="container-fluid row field">
+	  <div class="col-md-5">
+	    <%= f.label :tested_by,"Tested By:" %> <%= f.text_field :tested_by %>
+	  </div>
+	  <div class="col-md-6">
+	    <%= f.label :tested_by_date, "Date Tested:" %> <%= f.date_select :tested_by_date %>
+	  </div>
+  	</div>
+  	<hr>
+  	<b>CONCLUSION</b>
+  	<div class="container-fluid row field">
+	    <div class="col-md-4">
+		    <%= f.check_box :conclusion_accepted,:class=>"chb3" %> <%= f.label :conclusion_accepted, "Accepted" %>
+		</div>
+		<div class="col-md-4">
+		    <%= f.check_box :conclusion_rejected,:class=>"chb3" %> <%= f.label :conclusion_rejected, "Rejected" %>
+		</div>
+  	</div>
+  <script type="text/javascript">
+      $(".chb3").each(function()
+    {
+        $(this).change(function()
+        {
+            $(".chb3").prop('checked',false);
+            $(this).prop('checked',true);
+        });
+    });
+  </script>
+  <div class="field">
+    <%= f.label :conclusion_reason %><br>
+    <%= f.text_area :conclusion_reason, cols: "100", rows: "2" %>
+  </div>
+  <br>
+  <div class="container-fluid row field">
+	  <div class="col-md-5">
+	    <%= f.label :conclusion_by, "By:" %><%= f.text_field :conclusion_by %>
+	  </div>
+	  <div class="col-md-6">
+	    <%= f.label :conclusion_by_date, "Date Concluded:" %><%= f.date_select :conclusion_by_date %>
+	  </div>
+  </div>
+ 	<br>
+  <div class="field">
+    <%= f.label :deadline %><%= f.date_select :deadline %>
+  </div>
+  <hr>
+
+<script type="text/javascript"> 
+function Reveal (it, box) { 
+var vis = (box.checked) ? "block" : "none"; 
+document.getElementById(it).style.display = vis;
+} 
+
+function Hide (it, box) { 
+var vis = (box.checked) ? "none" : "none"; 
+document.getElementById(it).style.display = vis;
+} 
+</script>
+</div>
+<center>
+ <div class="actions submit-new-service-request">
+    <%= f.submit "Submit",:class=>"btn btn-default",:style=>"width:100px;" %>
+  </div>
+<% end %>
+</center>
+</div>
+</section>

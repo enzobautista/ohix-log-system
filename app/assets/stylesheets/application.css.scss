@@ -1,0 +1,66 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+html, body {
+    max-width: 100%;
+    background-color:#f2f2f2;
+    overflow-x:hidden;
+}
+section{
+	min-height:600px;
+}
+#service-request-listing{
+	overflow-x:hidden;
+	overflow-y:hidden;
+}
+.btn1 {
+	font-size: 20px;
+	font-weight:100;
+	color: white !important;
+	line-height: 20px;
+}
+.add-sr {
+	background: #a12821;
+	color: white;
+	width: 178px;
+	height: 35px;
+	border-radius: 0 !important;
+}
+.x-scroll{
+	overflow-x: scroll;
+	min-height:420px;
+}
+.card{
+ background-color:transparent;
+ z-index:11;
+ background-color:#F9F9F9;
+ margin-top:40px;
+ height: 540px;
+}
+#new-service-request{
+	background-color: #B6B6B6;
+	min-height: 640px;
+}
+.submit-new-service-request{
+	margin-top:5px;
+}
+.view{
+	height:385px;
+	overflow-y:scroll;
+	padding-left:20px;
+	overflow-x:hidden;
+}

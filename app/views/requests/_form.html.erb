@@ -1,0 +1,249 @@
+<%= form_for(@request) do |f| %>
+  <% if @request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@request.errors.count, "error") %> prohibited this request from being saved:</h2>
+
+      <ul>
+      <% @request.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :service_number %><br>
+    <%= f.number_field :service_number %>
+  </div>
+  <div class="field container-fluid row">
+    <div class="col-md-3">
+      <%= f.check_box :severity_critical,:class=>"chb" %> <%= f.label :severity_critical %>
+    </div>
+    <div class="col-md-3">
+      <%= f.check_box :severity_major,:class=>"chb" %> <%= f.label :severity_major %>
+    </div>
+    <div class="col-md-3">
+      <%= f.check_box :severity_minor,:class=>"chb" %> <%= f.label :severity_minor %>
+    </div>
+    <script type="text/javascript">
+      $(".chb").each(function()
+      {
+          $(this).change(function()
+          {
+              $(".chb").prop('checked',false);
+              $(this).prop('checked',true);
+          });
+      });
+    </script>
+  </div>
+  <div class="field">
+    <%= f.label :service_title %><br>
+    <%= f.text_field :service_title %>
+  </div>
+  <div class="field">
+    <%= f.label :reported_by %><br>
+    <%= f.text_field :reported_by %>
+  </div>
+  <div class="field">
+    <%= f.label :date_reported %><br>
+    <%= f.date_select :date_reported %>
+  </div>
+  <div class="field">
+    <%= f.label :dept_unit_section %><br>
+    <%= f.text_field :dept_unit_section %>
+  </div>
+  <div class="field">
+    <%= f.label :contact_number %><br>
+    <%= f.text_field :contact_number %>
+  </div>
+  <div class="field">
+    <%= f.label :affected_modules %><br>
+    <%= f.text_field :affected_modules %>
+  </div>
+  <div class="container-fluid row field">
+    <div class="col-md-3">
+      <%= f.check_box :request_type_software_defect,:class=>"chb1",:onClick=>"Hide('others_box', this);" %> <%= f.label :request_type_software_defect %>
+    </div>
+    <div class="col-md-3">
+      <%= f.check_box :request_type_configuration,:class=>"chb1",:onClick=>"Hide('others_box', this);" %> <%= f.label :request_type_configuration %>
+    </div>
+    <div class="col-md-3">
+      <%= f.check_box :request_type_data_fix,:class=>"chb1",:onClick=>"Hide('others_box', this);" %> <%= f.label :request_type_data_fix %>
+    </div>
+    <div class="col-md-3">
+      <%= f.check_box :request_type_desktop_problem,:class=>"chb1",:onClick=>"Hide('others_box', this);" %> <%= f.label :request_type_desktop_problem %>
+    </div>
+    <div class="col-md-3">
+      <%= f.check_box :request_type_preventive_maintenance,:class=>"chb1",:onClick=>"Hide('others_box', this);" %> <%= f.label :request_type_preventive_maintenance %>
+    </div>
+    <div class="col-md-3">
+      <%= f.check_box :request_type_program_enhancement,:class=>"chb1",:onClick=>"Hide('others_box', this);" %> <%= f.label :request_type_program_enhancement %>
+    </div>
+    <div class="col-md-3">
+      <%= f.check_box :request_type_report_request,:class=>"chb1",:onClick=>"Hide('others_box', this);" %> <%= f.label :request_type_report_request %>
+    </div>
+    <div class="col-md-3">
+      <%= f.check_box :request_type_new_system,:class=>"chb1",:onClick=>"Hide('others_box', this);" %> <%= f.label :request_type_new_system %>
+    </div>
+    <div class="col-md-3">
+      <%= f.check_box :request_type_new_system,:class=>"chb1",:onClick=>"Hide('others_box', this);" %> <%= f.label :request_type_new_system %>
+    </div>
+    <div class="col-md-3">
+      <input id="other-b" type="checkbox" class="chb1" onClick="Reveal('others_box', this);"> <label for="other-b">Other</label><br>
+      <%= f.text_field :request_type_others,:id=>"others_box" %>
+    </div>
+  </div>
+  <script type="text/javascript">
+      $(".chb1").each(function()
+    {
+        $(this).change(function()
+        {
+            $(".chb1").prop('checked',false);
+            $(this).prop('checked',true);
+        });
+    });
+  </script>
+  <div class="field">
+    <%= f.label :request_details %><br>
+    <%= f.text_area :request_details %>
+  </div>
+  <div class="field">
+    <%= f.label :attachments %><br>
+    <%= f.check_box :attachments %>
+  </div>
+  <div class="field">
+    <%= f.label :request_reported_by %><br>
+    <%= f.text_field :request_reported_by %>
+  </div>
+  <div class="field">
+    <%= f.label :request_reported_by_date %><br>
+    <%= f.date_select :request_reported_by_date %>
+  </div>
+  <div class="field">
+    <%= f.label :request_endorsed_by %><br>
+    <%= f.text_field :request_endorsed_by %>
+  </div>
+  <div class="field">
+    <%= f.label :request_endorsed_by_date %><br>
+    <%= f.date_select :request_endorsed_by_date %>
+  </div>
+  <div class="field">
+    <%= f.label :request_approved_by %><br>
+    <%= f.text_field :request_approved_by %>
+  </div>
+  <div class="field">
+    <%= f.label :request_approved_by_date %><br>
+    <%= f.date_select :request_approved_by_date %>
+  </div>
+  <div class="field">
+    <%= f.label :findings %><br>
+    <%= f.text_area :findings %>
+  </div>
+  <div class="field">
+    <%= f.label :assessment_software_defect %><br>
+    <%= f.check_box :assessment_software_defect %>
+  </div>
+  <div class="field">
+    <%= f.label :assessment_configuration %><br>
+    <%= f.check_box :assessment_configuration %>
+  </div>
+  <div class="field">
+    <%= f.label :assessment_enhancement %><br>
+    <%= f.check_box :assessment_enhancement %>
+  </div>
+  <div class="field">
+    <%= f.label :assessment_data %><br>
+    <%= f.check_box :assessment_data %>
+  </div>
+  <div class="field">
+    <%= f.label :assessment_business_process %><br>
+    <%= f.check_box :assessment_business_process %>
+  </div>
+  <div class="field">
+  assesment others
+  <%= f.text_field :assessment_others %>
+  </div>
+  <div class="field">
+    <%= f.label :assessed_by %><br>
+    <%= f.text_field :assessed_by %>
+  </div>
+  <div class="field">
+    <%= f.label :assessment_date %><br>
+    <%= f.date_select :assessment_date %>
+  </div>
+  <div class="field">
+    <%= f.label :recommendations %><br>
+    <%= f.text_area :recommendations %>
+  </div>
+  <div class="field">
+    <%= f.label :recommendation_endorsed_by %><br>
+    <%= f.text_field :recommendation_endorsed_by %>
+  </div>
+  <div class="field">
+    <%= f.label :recommendation_date %><br>
+    <%= f.date_select :recommendation_date %>
+  </div>
+  <div class="field">
+    <%= f.label :results_attachments_test_scenarios %><br>
+    <%= f.check_box :results_attachments_test_scenarios %>
+  </div>
+  <div class="field">
+    <%= f.label :results_attachments_test_results %><br>
+    <%= f.check_box :results_attachments_test_results %>
+  </div>
+  <div class="field">
+    <%= f.label :results_attachments_sample_output %><br>
+    <%= f.check_box :results_attachments_sample_output %>
+  </div>
+  <div class="field">
+    <%= f.label :tested_by %><br>
+    <%= f.text_field :tested_by %>
+  </div>
+  <div class="field">
+    <%= f.label :tested_by_date %><br>
+    <%= f.date_select :tested_by_date %>
+  </div>
+  <div class="field">
+    <%= f.label :conclusion_accepted %><br>
+    <%= f.check_box :conclusion_accepted %>
+  </div>
+  <div class="field">
+    <%= f.label :conclusion_rejected %><br>
+    <%= f.check_box :conclusion_rejected %>
+  </div>
+  <div class="field">
+    <%= f.label :conclusion_reason %><br>
+    <%= f.text_area :conclusion_reason %>
+  </div>
+  <div class="field">
+    <%= f.label :conclusion_by %><br>
+    <%= f.text_field :conclusion_by %>
+  </div>
+  <div class="field">
+    <%= f.label :conclusion_by_date %><br>
+    <%= f.date_select :conclusion_by_date %>
+  </div>
+  <div class="field">
+    <%= f.label :deadline %><br>
+    <%= f.date_select :deadline %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<script type="text/javascript"> 
+function Reveal (it, box) { 
+var vis = (box.checked) ? "block" : "none"; 
+document.getElementById(it).style.display = vis;
+} 
+
+function Hide (it, box) { 
+var vis = (box.checked) ? "none" : "none"; 
+document.getElementById(it).style.display = vis;
+} 
+</script>
+</head>
+<body>
+
+
