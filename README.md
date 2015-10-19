@@ -1,4 +1,6 @@
-# ohix-log-system
+# ohix-log-system 
+######Description: 
+This is a rough implementation of a proposed system for my Junior Engagement Program in PCMC. 
 ######Proposed flow:
 1. ohix receives call from a department (*the employee who answers the call is logged*)
 2. call is logged in system 
