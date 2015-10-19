@@ -5,6 +5,7 @@
 3. an action is taken (*resolved, service request, request for system assistance*)
 4. create required forms
 5. create project once approved
-6. track project
-7. track projects completed by employees
-8. evaluate projects
+6. assign employee to project
+7. update project progress
+8. track projects completed by employees
+9. evaluate projects
